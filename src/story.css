@@ -1,0 +1,57 @@
+/* Native document flow; no mandatory snapping or pinned content panels. */
+html { scroll-behavior: auto; scroll-padding-top: 0; }
+body { overflow-x: clip; }
+#app { display: block; isolation: isolate; }
+header { position: fixed; top: 0; left: 6%; right: 6%; height: 96px; z-index: 10; background: transparent; border-bottom: none; }
+nav { gap: clamp(16px, 2.2vw, 36px); }
+nav a { font-size: 10px; }
+main { position: relative; z-index: 1; }
+.space-background { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; background: #03060d; }
+.space-background canvas { display: block; position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; }
+.space-background.space-ready canvas { opacity: 1; }
+.space-ready .scene { visibility: hidden; }
+.space-overlay { position: fixed; inset: 0; z-index: 0; pointer-events: none; background: linear-gradient(90deg, #03060dc9 0%, #03060d85 32%, #03060d0a 70%), radial-gradient(ellipse at 65% 44%, transparent 25%, #03060d99 100%); }
+.scene { position: fixed; top: 10vh; right: -3%; width: 65vw; height: 85vh; z-index: 0; pointer-events: none; transform-origin: 55% 50%; will-change: transform; opacity: .8; }
+.story-section { position: relative; min-height: 100svh; padding: 140px 0 80px; display: flex; align-items: center; overflow: visible; isolation: auto; outline: none; }
+.section-content { width: 100%; position: relative; }
+.hero .hero-copy { width: 55%; padding: 0; }
+.hero-bottom { bottom: 32px; }
+.hero-bottom a { color: var(--gold); padding: 12px 0; }
+.section-title { font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: clamp(44px, 5vw, 75px); line-height: 1.15; letter-spacing: -2px; margin: 25px 0 35px; max-width: 900px; }
+[data-reveal] { transform-origin: left center; }
+.about-layout, .experience-copy, .contact-copy { text-shadow: 0 2px 18px #0b1013; }
+.experience-copy, .contact-copy { max-width: 620px; }
+.project[hidden] { display: none; }
+.project-info h3 { display: flex; justify-content: space-between; font-size: 19px; font-weight: 500; }
+.project-info h3 span { color: var(--gold); }
+.project-art { height: clamp(160px, 25vh, 260px); }
+#contact footer { position: absolute; bottom: 0; width: 100%; }
+.story-progress { position: fixed; right: 20px; top: 50%; transform: translateY(-50%); z-index: 5; display: flex; flex-direction: column; align-items: center; gap: 20px; pointer-events: none; }
+.story-index { font-size: 8px; letter-spacing: 2px; color: var(--gold); writing-mode: vertical-rl; }
+.progress-track { height: 120px; width: 1px; background: #c6ac742b; }
+.progress-fill { display: block; width: 100%; height: 100%; background: var(--gold); transform: scaleY(0); transform-origin: top; }
+@media (min-width: 1800px) { header { left: calc((100vw - 1584px) / 2); right: calc((100vw - 1584px) / 2); } }
+@media (max-width: 1000px) { header { gap: 14px; }.brand { font-size: 10px; letter-spacing: 1px; }.brand small { font-size: 7px; } nav { gap: 15px; } }
+@media (max-width: 760px) {
+  .space-overlay { background: linear-gradient(90deg, #03060d9e, #03060d44), linear-gradient(0deg, #03060d80, transparent); }
+  header { left: 7%; right: 7%; height: 130px; gap: 0; }
+  nav { width: 100%; justify-content: space-between; gap: 7px; }
+  nav a { font-size: 8px; letter-spacing: .5px; }
+  .story-section { min-height: 100svh; padding: 165px 0 85px; }
+  .hero .hero-copy { width: 100%; }
+  .hero h1 { font-size: clamp(65px, 19vw, 82px); }
+  .hero { min-height: max(100svh, 770px); }
+  .scene { width: 125vw; height: 70svh; right: -49%; top: 27svh; opacity: .45; }
+  .section-title { font-size: 42px; }
+  .story-progress { right: 9px; }
+  .progress-track { height: 70px; }
+  .story-index { font-size: 7px; }
+  .about-layout { gap: 25px; }
+  .project-art { height: 220px; }
+  .projects { gap: 24px; }
+  .hero-bottom { font-size: 7px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scene { transform: none !important; will-change: auto; }
+  [data-reveal] { opacity: 1 !important; transform: none !important; }
+}
