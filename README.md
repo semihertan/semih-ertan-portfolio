@@ -16,4 +16,4 @@ npm test
 npm run build
 ```
 
-Site, `main` dalına gönderilen her değişiklikte GitHub Actions ile GitHub Pages'a dağıtılır.
+Site, Vercel'de GitHub repository'sinden dağıtılır. Build komutu `npm run build`, çıktı dizini `dist` olarak ayarlanır.
